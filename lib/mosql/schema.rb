@@ -123,6 +123,8 @@ module MoSQL
         case v
         when BSON::Binary, BSON::ObjectId
           v = v.to_s
+        when BSON::OrderedHash
+          v = v.to_json
         end
         row << v
       end
